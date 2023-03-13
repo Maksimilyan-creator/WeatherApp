@@ -40,5 +40,31 @@ namespace WeatherApp
             ////поиск
             //WeatherDataGrid.DataSource = vs.Where(u => u.DigitName.Contains(textBox1.Text)).ToList();
         }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            WeatherDataGrid.DataSource = _weather.Weathers.ToList();
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, System.EventArgs e)
+        {
+            WeatherDataGrid.DataSource = _weather.Weathers.Where(u => u.MeasureUnit.ToString().Contains(comboBox1.Text)).ToList();
+        }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+            WeatherDataGrid.DataSource = _weather.Weathers.Where(u => u.Temperature >= 0).ToList();
+
+        }
+
+        private void button4_Click(object sender, System.EventArgs e)
+        {
+            WeatherDataGrid.DataSource = _weather.Weathers.OrderBy(u=>u.Temperature).ToList();
+        }
     }
 }
